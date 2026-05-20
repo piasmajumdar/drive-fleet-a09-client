@@ -1,7 +1,8 @@
 'use client'
 
 import { authClient } from '@/lib/auth-client';
-import { Button } from '@heroui/react';
+import { Check } from '@gravity-ui/icons';
+import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -11,10 +12,13 @@ import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
     const router = useRouter();
-    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const handleRegister = async (formData) => {
-        // console.log(formData)
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        const formDataInput = new FormData(e.currentTarget);
+        const formData = Object.fromEntries(formDataInput.entries())
+        console.log(formData);
         const { name, email, photo, password } = formData;
         // console.log(name, email, photo, password)
 
@@ -60,48 +64,83 @@ const SignUpPage = () => {
                     <FcGoogle></FcGoogle>
                     Login with Google
                 </Button>
-                <form onSubmit={handleSubmit(handleRegister)} className='space-y-2'>
-
-                    <fieldset className="fieldset">
-                        <label className="label">Name</label>
-                        <input
-                            type="text"
-                            className="input w-full"
-                            placeholder="Name"
-                            {...register("name", { required: "Name is required" })}
-                        />
-                        {errors.name && <small className='text-red-500'>{errors.name.message}</small>}
-
-                    </fieldset>
-                    <fieldset className="fieldset">
-                        <label className="label">Email</label>
-                        <input
-                            type="email"
-                            className="input w-full"
-                            placeholder="Email"
-                            {...register("email", { required: "Email is Required" })} />
-
-                    </fieldset>
-                    <fieldset className="fieldset">
-                        <label className="label">Photo URL</label>
-                        <input
-                            type="text"
-                            className="input w-full"
-                            placeholder="photo"
-                            {...register("photo", { required: "Photo is Required" })} />
-
-                    </fieldset>
-                    <fieldset className="fieldset">
-                        <label className="label">Password</label>
-                        <input
-                            type="password"
-                            className="input w-full"
-                            placeholder="Password"
-                            {...register("password", { required: "Password is required" })} />
-                    </fieldset>
+                <Form className="flex flex-col gap-4" onSubmit={handleRegister}>
+                    <TextField
+                        isRequired
+                        name="name"
+                        type="text"
+                        validate={(value) => {
+                            if (value.trim().length < 2) {
+                                return "Name must be at least 2 characters";
+                            }
+                            return null;
+                        }}
+                    >
+                        <Label>Name</Label>
+                        <Input placeholder="Your Name" />
+                        <FieldError />
+                    </TextField>
+                    <TextField
+                        isRequired
+                        name="email"
+                        type="email"
+                        validate={(value) => {
+                            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                                return "Please enter a valid email address";
+                            }
+                            return null;
+                        }}
+                    >
+                        <Label>Email</Label>
+                        <Input placeholder="john@example.com" />
+                        <FieldError />
+                    </TextField>
+                    <TextField
+                        isRequired
+                        name="photo"
+                        type="text"
+                        validate={(value) => {
+                            try {
+                                new URL(value);
+                                return null;
+                            } catch {
+                                return "Please enter a valid URL";
+                            }
+                        }}
+                    >
+                        <Label>Photo</Label>
+                        <Input placeholder="https://photoURL.com" />
+                        <FieldError />
+                    </TextField>
+                    <TextField
+                        isRequired
+                        minLength={8}
+                        name="password"
+                        type="password"
+                        validate={(value) => {
+                            if (value.length < 6) {
+                                return "Password must be at least 6 characters";
+                            }
+                            if (!/[A-Z]/.test(value)) {
+                                return "Password must contain at least one uppercase letter";
+                            }
+                            if (!/[a-z]/.test(value)) {
+                                return "Password must contain at least one lowercase letter";
+                            }
+                            if (!/[0-9]/.test(value)) {
+                                return "Password must contain at least one number";
+                            }
+                            return null;
+                        }}
+                    >
+                        <Label>Password</Label>
+                        <Input placeholder="Enter your password" />
+                        <Description>Must be at least 6 characters with 1 uppercase, 1 lowercase and 1 number</Description>
+                        <FieldError />
+                    </TextField>
                     <Button variant='primary' type="submit" className="mt-4 w-full">Sign Up</Button>
                     <h2>Already have an account? <Link href={'/auth/login'} className='text-blue-800'>Login</Link></h2>
-                </form>
+                </Form>
             </div>
         </div>
     );

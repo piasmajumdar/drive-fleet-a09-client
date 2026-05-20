@@ -5,10 +5,19 @@ import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
 import { Avatar, Dropdown, Label } from "@heroui/react";
 import Link from 'next/link';
 import { authClient } from './../lib/auth-client';
+import { toast } from 'react-toastify';
 
 const UserProfileRightNav = () => {
 
     const { data: session, isPending } = authClient.useSession()
+    // console.log(session?.user)
+    const handleLogOut = async()=>{
+        const data = await authClient.signOut();
+        // console.log(data);
+        if(data.data.success){
+            toast.success("Logout Successfully")
+        }
+    }
 
     return (
         <div>
@@ -23,7 +32,7 @@ const UserProfileRightNav = () => {
                                         src={session?.user?.image}
                                         alt='user profile'
                                     />
-                                    <Avatar.Fallback delayMs={600}>N/A</Avatar.Fallback>
+                                    <Avatar.Fallback delayMs={600}>{session?.user?.name}</Avatar.Fallback>
                                 </Avatar>
                             </Dropdown.Trigger>
                             <Dropdown.Popover>
@@ -52,7 +61,7 @@ const UserProfileRightNav = () => {
                                     <Dropdown.Item id="myAddedCar" textValue="myAddedCar">
                                         <Link href={'/my-added-car'}><Label>My Added Car</Label></Link>
                                     </Dropdown.Item>
-                                    <Dropdown.Item id="logout" textValue="Logout" onClick={async () => await authClient.signOut()} variant="danger">
+                                    <Dropdown.Item id="logout" textValue="Logout" onClick={handleLogOut} variant="danger">
                                         <div className="flex w-full items-center justify-between gap-2">
                                             <Label>Logout</Label>
                                             <ArrowRightFromSquare className="size-3.5 text-danger" />
