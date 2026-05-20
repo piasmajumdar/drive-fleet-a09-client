@@ -1,13 +1,24 @@
 "use client"
+import { authClient } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { MdFavoriteBorder } from "react-icons/md";
 
-const BookCarModal = ({car}) => {
+const BookCarModal = ({ car }) => {
+    const router = useRouter()
+
+    const { data: session } = authClient.useSession()
+    const handleLoginBeforeBook = () => {
+        if (!session) {
+            router.push('/auth/login')
+        }
+    }
+    
     return (
         <div>
             <Modal>
-                <Button variant="danger" className={'text-2xl bg-red-600 rounded-md hover:shadow-xl hover:shadow-red-300 hover:scale-105 p-5'}>Book Now</Button>
+                <Button onClick={handleLoginBeforeBook} variant="danger" className={'text-2xl bg-red-600 rounded-md hover:shadow-xl hover:shadow-red-300 hover:scale-105 p-5'}>Book Now</Button>
                 <Modal.Backdrop>
                     <Modal.Container placement="auto">
                         <Modal.Dialog className="sm:max-w-md">
@@ -15,7 +26,7 @@ const BookCarModal = ({car}) => {
                             <Modal.Body className="p-2 w-full">
                                 <Surface variant="default">
                                     <form className="flex flex-col gap-4">
-                                        
+
                                         <div className="bg-white rounded-[28px] border border-gray-200 p-7 shadow-sm">
 
                                             <h2 className="text-3xl font-bold text-black mb-8">
