@@ -9,12 +9,14 @@ const BookCarModal = ({ car }) => {
     const router = useRouter()
 
     const { data: session } = authClient.useSession()
+    console.log(session);
+    
     const handleLoginBeforeBook = () => {
         if (!session) {
             router.push('/auth/login')
         }
     }
-    
+
     return (
         <div>
             <Modal>
@@ -62,43 +64,27 @@ const BookCarModal = ({ car }) => {
 
                                                 <div>
                                                     <label className="text-sm text-gray-500 block mb-2">
-                                                        Pick-up Date
+                                                        Driver Needed
                                                     </label>
 
-                                                    <input
-                                                        type="date"
+                                                    <select
                                                         className="w-full h-14 rounded-2xl border border-gray-200 px-4 outline-none bg-white focus:border-red-500"
-                                                    />
+                                                        defaultValue=""
+                                                    >
+                                                        <option value="yes">Yes</option>
+                                                        <option value="no">No</option>
+                                                    </select>
                                                 </div>
 
                                                 <div>
                                                     <label className="text-sm text-gray-500 block mb-2">
-                                                        Return Date
+                                                        Special Note
                                                     </label>
 
                                                     <input
-                                                        type="date"
+                                                        type="text"
                                                         className="w-full h-14 rounded-2xl border border-gray-200 px-4 outline-none bg-white focus:border-red-500"
                                                     />
-                                                </div>
-                                            </div>
-
-                                            {/* Price Summary */}
-                                            <div className="border-t border-gray-200 mt-8 pt-6 space-y-4">
-
-                                                <div className="flex items-center justify-between text-gray-500">
-                                                    <span>Total Days</span>
-                                                    <span>3 Days</span>
-                                                </div>
-
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-gray-500">
-                                                        Total Price
-                                                    </span>
-
-                                                    <span className="text-3xl font-black text-red-600">
-                                                        BDT ....
-                                                    </span>
                                                 </div>
                                             </div>
 
