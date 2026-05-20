@@ -24,18 +24,52 @@ import {
     IoChevronForward,
 } from "react-icons/io5";
 import BookCarModal from "./BookCarModal";
+import { VscAccount } from "react-icons/vsc";
+import { AiOutlineNumber } from "react-icons/ai";
 
-const gallery = [
-    "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop",
-];
+// {
+//   "_id": {
+//     "$oid": "6a0e36d84686844fcd7321e8"
+//   },
+//   "carName": "Toyota Corolla Cross",
+//   "dailyRentPrice": 4500,
+//   "carType": "SUV",
+//   "imageURL": [
+//     "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=900&q=70",
+//     "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=70",
+//     "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=70"
+//   ],
+//   "seatCapacity": 5,
+//   "pickupLocation": "Banani",
+//   "description": "A comfortable and fuel-efficient SUV perfect for city rides and family trips across Dhaka.",
+//   "availabilityStatus": "Available",
+//   "about": "Toyota Corolla Cross combines SUV practicality with premium comfort, smooth driving, and strong fuel economy.",
+//   "features": [
+//     "Bluetooth",
+//     "Backup Camera",
+//     "GPS Navigation",
+//     "Apple CarPlay",
+//     "Android Auto",
+//     "Cruise Control",
+//     "Push Start",
+//     "Parking Sensors"
+//   ],
+//   "fuelType": "Petrol",
+//   "mileage": 16,
+//   "engineModel": "1.8L Hybrid",
+//   "doors": 4,
+//   "transmission": "Automatic",
+//   "ratings": 4.7,
+//   "reviewsCount": 132,
+//   "bookingCount": 0
+// }
 
-export default function CarDetailsCard() {
+export default function CarDetailsCard({ car }) {
+    // console.log(car);
+
     return (
-        <section className="bg-[#fafafa] min-h-screen py-10">
-            <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <section className="min-h-screen py-10">
+            <div className="">
 
                 {/* Breadcrumb */}
                 <div className="flex items-center gap-3 text-sm text-gray-500 mb-8">
@@ -52,14 +86,13 @@ export default function CarDetailsCard() {
                     <span>/</span>
 
                     <span className="text-black font-medium">
-                        BMW 5 Series
+                        {car?.carName}
                     </span>
                 </div>
 
                 {/* Main Grid */}
                 <div className="">
 
-                    {/* LEFT */}
                     <div className="">
 
                         {/* Top */}
@@ -72,7 +105,7 @@ export default function CarDetailsCard() {
                                 <div className="relative rounded-[28px] overflow-hidden bg-white border border-gray-200">
 
                                     <Image
-                                        src={gallery[0]}
+                                        src={car?.imageURL[0]}
                                         alt="BMW"
                                         width={700}
                                         height={500}
@@ -83,7 +116,7 @@ export default function CarDetailsCard() {
                                     <div className="absolute top-5 right-5 bg-white rounded-full px-4 py-2 shadow-md flex items-center gap-2">
                                         <FaStar className="text-red-500" />
                                         <span className="font-semibold text-sm">
-                                            4.9
+                                            {car?.ratings}
                                         </span>
                                     </div>
 
@@ -99,7 +132,7 @@ export default function CarDetailsCard() {
 
                                 {/* Thumbnails */}
                                 <div className="flex gap-4 mt-5">
-                                    {gallery.map((img, index) => (
+                                    {car?.imageURL.map((img, index) => (
                                         <div
                                             key={index}
                                             className="rounded-2xl overflow-hidden border border-gray-200 bg-white cursor-pointer hover:border-red-500 transition"
@@ -122,10 +155,7 @@ export default function CarDetailsCard() {
                                     </h2>
 
                                     <p className="text-gray-500 leading-8 max-w-4xl">
-                                        Experience executive-class comfort with the BMW
-                                        5 Series. It comes with premium interiors,
-                                        powerful engine performance, and advanced safety
-                                        features designed for modern travelers.
+                                        {car?.about}
                                     </p>
                                 </div>
                             </div>
@@ -135,7 +165,7 @@ export default function CarDetailsCard() {
 
                                 {/* Title */}
                                 <h1 className="text-4xl font-black text-black mb-4">
-                                    BMW 5 Series
+                                    {car?.carName}
                                 </h1>
 
                                 {/* Meta */}
@@ -143,17 +173,17 @@ export default function CarDetailsCard() {
 
                                     <div className="flex items-center gap-2">
                                         <FaCarSide />
-                                        <span>Luxury</span>
+                                        <span>{car?.carType}</span>
                                     </div>
 
                                     <div className="flex items-center gap-2">
                                         <GiGearStickPattern />
-                                        <span>Automatic</span>
+                                        <span>{car?.transmission}</span>
                                     </div>
 
                                     <div className="flex items-center gap-2">
                                         <MdOutlineAirlineSeatReclineNormal />
-                                        <span>5 Seats</span>
+                                        <span>{car?.seatCapacity} Seats</span>
                                     </div>
                                 </div>
 
@@ -163,37 +193,31 @@ export default function CarDetailsCard() {
                                     <div className="flex items-center gap-2">
                                         <FaStar className="text-red-500" />
                                         <span className="font-semibold text-black">
-                                            4.9
+                                            {car?.ratings}
                                         </span>
                                         <span className="text-gray-500 text-sm">
-                                            (120 reviews)
+                                            ({car?.reviewsCount} reviews)
                                         </span>
                                     </div>
 
-                                    <div className="flex text-red-500">
-                                        <FaStar />
-                                        <FaStar />
-                                        <FaStar />
-                                        <FaStar />
-                                        <FaStar />
+                                    <div className="flex items-center gap-2 text-red-500 ">
+                                        <AiOutlineNumber />
+                                        <span className="font-bold text-2xl">{car?.bookingCount}</span>
+                                        <span className="text-gray-500 text-sm"> Times Booked</span>
                                     </div>
 
-                                    <span className="text-gray-500 text-sm">
-                                        120 reviews
-                                    </span>
+
                                 </div>
 
                                 {/* Location */}
                                 <div className="flex items-center gap-2 text-gray-600 mb-6">
                                     <FaMapMarkerAlt className="text-red-500" />
-                                    <span>Dhaka, Bangladesh</span>
+                                    <span>{car?.pickupLocation}</span>
                                 </div>
 
                                 {/* Description */}
                                 <p className="text-gray-500 leading-7 mb-8">
-                                    The BMW 5 Series offers a perfect blend of
-                                    luxury, performance, and advanced technology.
-                                    Ideal for both city drives and long journeys.
+                                    {car?.description}
                                 </p>
 
                                 {/* Features */}
@@ -203,14 +227,7 @@ export default function CarDetailsCard() {
                                     </h3>
 
                                     <div className="flex flex-wrap gap-3">
-                                        {[
-                                            "Bluetooth",
-                                            "Backup Camera",
-                                            "GPS",
-                                            "Heated Seats",
-                                            "Air Conditioning",
-                                            "Cruise Control",
-                                        ].map((item) => (
+                                        {car?.features.map((item) => (
                                             <span
                                                 key={item}
                                                 className="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm text-gray-600"
@@ -231,7 +248,7 @@ export default function CarDetailsCard() {
                                         </div>
 
                                         <span className="font-bold text-red-600">
-                                            $120 / day
+                                            BDT{car?.dailyRentPrice} / day
                                         </span>
                                     </div>
 
@@ -242,7 +259,7 @@ export default function CarDetailsCard() {
                                         </div>
 
                                         <span className="font-medium text-black">
-                                            Petrol
+                                            {car?.fuelType}
                                         </span>
                                     </div>
 
@@ -253,7 +270,7 @@ export default function CarDetailsCard() {
                                         </div>
 
                                         <span className="font-medium text-black">
-                                            12 km/l
+                                            {car?.mileage} km/l
                                         </span>
                                     </div>
 
@@ -264,7 +281,7 @@ export default function CarDetailsCard() {
                                         </div>
 
                                         <span className="font-medium text-black">
-                                            2.0L Turbo
+                                            {car?.engineModel}
                                         </span>
                                     </div>
 
@@ -275,7 +292,7 @@ export default function CarDetailsCard() {
                                         </div>
 
                                         <span className="font-medium text-black">
-                                            4
+                                            {car?.doors}
                                         </span>
                                     </div>
 
@@ -286,7 +303,7 @@ export default function CarDetailsCard() {
                                         </div>
 
                                         <span className="font-semibold text-green-600">
-                                            Available
+                                            {car?.availabilityStatus}
                                         </span>
                                     </div>
                                 </div>
@@ -294,8 +311,8 @@ export default function CarDetailsCard() {
                         </div>
                     </div>
 
-                    <div className="fixed bottom-5 right-5 inline-block">
-                        <BookCarModal></BookCarModal>
+                    <div className="fixed bottom-7 right-7 inline-block">
+                        <BookCarModal car={car}></BookCarModal>
                     </div>
                 </div>
             </div>

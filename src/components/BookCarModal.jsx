@@ -1,20 +1,21 @@
+"use client"
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { MdFavoriteBorder } from "react-icons/md";
 
-const BookCarModal = () => {
+const BookCarModal = ({car}) => {
     return (
         <div>
             <Modal>
-                <Button variant="secondary">Open Contact Form</Button>
+                <Button variant="danger" className={'text-2xl bg-red-600 rounded-md hover:shadow-xl hover:shadow-red-300 hover:scale-105 p-5'}>Book Now</Button>
                 <Modal.Backdrop>
                     <Modal.Container placement="auto">
                         <Modal.Dialog className="sm:max-w-md">
                             <Modal.CloseTrigger />
-                            <Modal.Body className="p-2">
+                            <Modal.Body className="p-2 w-full">
                                 <Surface variant="default">
                                     <form className="flex flex-col gap-4">
-                                        {/* RIGHT */}
+                                        
                                         <div className="bg-white rounded-[28px] border border-gray-200 p-7 shadow-sm">
 
                                             <h2 className="text-3xl font-bold text-black mb-8">
@@ -28,7 +29,7 @@ const BookCarModal = () => {
                                                 </span>
 
                                                 <span className="text-3xl font-black text-red-600">
-                                                    $120
+                                                    BDT {car?.dailyRentPrice}
                                                 </span>
                                             </div>
 
@@ -37,12 +38,12 @@ const BookCarModal = () => {
 
                                                 <div>
                                                     <label className="text-sm text-gray-500 block mb-2">
-                                                        Pick-up Location
+                                                        Pickup Location
                                                     </label>
 
                                                     <input
                                                         type="text"
-                                                        value="Dhaka, Bangladesh"
+                                                        value={car?.pickupLocation}
                                                         readOnly
                                                         className="w-full h-14 rounded-2xl border border-gray-200 px-4 outline-none bg-white focus:border-red-500"
                                                     />
@@ -85,7 +86,7 @@ const BookCarModal = () => {
                                                     </span>
 
                                                     <span className="text-3xl font-black text-red-600">
-                                                        $360
+                                                        BDT ....
                                                     </span>
                                                 </div>
                                             </div>

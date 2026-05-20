@@ -23,7 +23,7 @@ const CarCard = ({ car }) => {
             {/* Image Section */}
             <div className="relative overflow-hidden rounded-xl">
                 <Image
-                    src={car?.imageURL}
+                    src={car?.imageURL[0]}
                     alt="Toyota RAV4"
                     height={300}
                     width={300}
