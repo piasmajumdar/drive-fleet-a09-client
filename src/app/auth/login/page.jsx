@@ -22,16 +22,18 @@ const LoginPage = () => {
             email: email, // required
             password: password, // required
             rememberMe: true,
-            callbackURL: process.env.BETTER_AUTH_URL,
+            callbackURL: process.env.BETTER_AUTH_URL
         });
+
         if (res) {
             toast.success("Login Successful");
             router.push('/')
+            // console.log(res)
         }
 
         if (error) {
             toast.error(error.message)
-            console.log(error)
+            // console.log(error)
         }
 
     }
@@ -40,7 +42,6 @@ const LoginPage = () => {
             provider: "google",
         });
         if (res) {
-            toast.success("Login Successful");
             router.push('/')
         }
 
