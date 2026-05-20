@@ -20,7 +20,7 @@ import {
 export default function Footer() {
     return (
         <footer className="border-t border-red-100 bg-white">
-            <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+            <div className="mx-auto w-11/12 py-16">
                 <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
 
                     {/* Logo + Description */}
