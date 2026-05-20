@@ -18,7 +18,7 @@ const Navbar = async () => {
 
 
     return (
-        <div className='bg-white/30'>
+        <div className='bg-red-100/20 border-b border-b-red-100'>
             <div className='w-11/12 mx-auto'>
                 <div className='flex justify-between items-center py-5'>
 
@@ -31,9 +31,9 @@ const Navbar = async () => {
                                         <Drawer.Dialog>
                                             <Drawer.Header>
                                                 <Drawer.Heading>
-                                                    <div className={`${plusJakarta.className}`}>
+                                                    <Link href={'/'} className={`${plusJakarta.className}`}>
                                                         <h2 className='text-2xl font-bold'>DriveFleet</h2>
-                                                    </div>
+                                                    </Link>
                                                 </Drawer.Heading>
                                             </Drawer.Header>
                                             <Drawer.Body className='space-y-5 pt-5'>
@@ -49,10 +49,10 @@ const Navbar = async () => {
                             </Drawer>
                         </div>
 
-                        <div className={`${plusJakarta.className} flex gap-1 items-center`}>
+                        <Link href={'/'} className={`${plusJakarta.className} flex gap-1 items-center`}>
                             <Image src={'/logo.png'} alt='nav' height={40} width={40}></Image>
                             <h2 className='text-2xl font-bold hidden sm:flex'>DriveFleet</h2>
-                        </div>
+                        </Link>
                     </div>
 
                     <ul className='gap-3 hidden md:flex'>
