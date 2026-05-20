@@ -68,7 +68,7 @@ const CarCard = ({ car }) => {
                         </span>
                     </div>
                 </div>
-                <Link href={'#'}><Button variant="danger" className={'bg-[#c40101] mt-auto'}>View Details</Button></Link>
+                <Link href={`/explore-cars/${car._id}`}><Button variant="danger" className={'bg-[#c40101] mt-auto'}>View Details</Button></Link>
             </div>
         </div>
     )

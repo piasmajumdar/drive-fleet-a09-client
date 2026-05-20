@@ -11,10 +11,10 @@ const UserProfileRightNav = () => {
 
     const { data: session, isPending } = authClient.useSession()
     // console.log(session?.user)
-    const handleLogOut = async()=>{
+    const handleLogOut = async () => {
         const data = await authClient.signOut();
         // console.log(data);
-        if(data.data.success){
+        if (data.data.success) {
             toast.success("Logout Successfully")
         }
     }
@@ -72,14 +72,12 @@ const UserProfileRightNav = () => {
                         </Dropdown>
                     </ul>
                     :
-                    <ul className='flex gap-3 items-center'>
-                        <li><Link href={'/auth/login'}>Login</Link></li>
-                        <li><Link href={'/auth/register'}>Sign Up</Link></li>
-                    </ul>
+                    <Button variant="danger" className={'bg-[#c40101] mt-auto rounded-md hover:scale-105 hover:shadow-xl hover:shadow-red-200'}><Link href={'/auth/login'}>Login</Link> </Button>
+                    
             }
 
 
-        </div>
+        </div >
 
 
     );
