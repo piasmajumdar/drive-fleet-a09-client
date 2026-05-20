@@ -1,3 +1,5 @@
+import CarDetailsCard from "@/components/CarDetailsCard";
+
 const CarDetailsPage = async({params}) => {
     const {id} = await params;
 
@@ -7,8 +9,8 @@ const CarDetailsPage = async({params}) => {
 
     
     return (
-        <div className="w-11/12 mx-auto">
-            Car Details
+        <div className="w-11/12 mx-auto my-4">
+            <CarDetailsCard></CarDetailsCard>
         </div>
     );
 };
