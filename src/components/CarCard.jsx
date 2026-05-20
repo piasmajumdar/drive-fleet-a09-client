@@ -18,7 +18,7 @@ const CarCard = ({ car }) => {
         //     "availabilityStatus": "Available"
         // }
 
-        <div className="w-full h-full flex flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-sm hover:shadow-md hover:shadow-red-300 hover:scale-105 transition-all duration-300">
+        <div className="w-full h-full flex flex-col rounded-2xl border border-gray-200 p-3 shadow-sm hover:shadow-md hover:shadow-red-300 hover:scale-105 transition-all duration-300">
 
             {/* Image Section */}
             <div className="relative overflow-hidden rounded-xl">
@@ -38,8 +38,8 @@ const CarCard = ({ car }) => {
             </div>
 
             {/* Content */}
-            <div className="mt-4 flex flex-col flex-1">
-                <h2 className="text-2xl font-bold text-gray-900">
+            <div className="mt-4  flex flex-col flex-1">
+                <h2 className="text-2xl font-bold dark:text-red-600 text-gray-900">
                     {car?.carName}
                 </h2>
 

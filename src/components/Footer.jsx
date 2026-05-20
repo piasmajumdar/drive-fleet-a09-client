@@ -19,7 +19,7 @@ import {
 
 export default function Footer() {
     return (
-        <footer className="border-t border-red-100 bg-white">
+        <footer className="border-t border-red-100">
             <div className="mx-auto w-11/12 py-16">
                 <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
 
@@ -27,12 +27,12 @@ export default function Footer() {
                     <div>
                         <div className="flex items-center gap-3">
                             <Image src={'/logo.png'} alt='nav' height={40} width={40}></Image>
-                            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+                            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
                                 DriveFleet
                             </h2>
                         </div>
 
-                        <p className="mt-5 text-sm leading-7 text-gray-600">
+                        <p className="mt-5 text-sm leading-7 text-gray-600 dark:text-white">
                             Premium car rental platform for seamless booking experiences,
                             luxury rides, and modern travel solutions.
                         </p>
@@ -80,7 +80,7 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-lg font-bold text-gray-900">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                             Quick Links
                         </h3>
 
@@ -119,7 +119,7 @@ export default function Footer() {
 
                     {/* Services */}
                     <div>
-                        <h3 className="text-lg font-bold text-gray-900">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                             Services
                         </h3>
 
@@ -146,7 +146,7 @@ export default function Footer() {
 
                     {/* Contact */}
                     <div>
-                        <h3 className="text-lg font-bold text-gray-900">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                             Contact Info
                         </h3>
 
