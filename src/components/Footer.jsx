@@ -38,7 +38,7 @@ export default function Footer() {
                         </p>
 
                         {/* Social Icons */}
-                        <div className="mt-6 flex items-center gap-3">
+                        <div className="mt-6 flex flex-wrap items-center gap-3">
 
                             <Link
                                 href="#"

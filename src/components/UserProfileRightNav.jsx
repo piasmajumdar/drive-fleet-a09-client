@@ -58,8 +58,8 @@ const UserProfileRightNav = () => {
                                     <Dropdown.Item id="myBookings" textValue="myBookings">
                                         <Link href={'/my-bookings'}><Label>My Bookings</Label></Link>
                                     </Dropdown.Item>
-                                    <Dropdown.Item id="myAddedCar" textValue="myAddedCar">
-                                        <Link href={'/my-added-car'}><Label>My Added Car</Label></Link>
+                                    <Dropdown.Item id="myAddedCars" textValue="myAddedCars">
+                                        <Link href={'/my-added-cars'}><Label>My Added Cars</Label></Link>
                                     </Dropdown.Item>
                                     <Dropdown.Item id="logout" textValue="Logout" onClick={handleLogOut} variant="danger">
                                         <div className="flex w-full items-center justify-between gap-2">
