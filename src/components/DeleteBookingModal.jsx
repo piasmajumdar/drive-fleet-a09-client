@@ -1,7 +1,20 @@
+'use client'
 import { AlertDialog, Button } from '@heroui/react';
 import React from 'react';
+import { toast } from 'react-toastify';
 
-const DeleteBookingModal = ({booking}) => {
+const DeleteBookingModal = ({booking, revalidateMyBooking}) => {
+    const handleDelete = async() =>{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/${booking?._id}`, {
+            method: "DELETE"
+        });
+        const data = await res.json();
+        // console.log(data);
+        if(data?.deletedCount > 0){
+            toast.success(`${booking?.car?.carName}- booking deleted successfully`);
+            revalidateMyBooking();
+        }
+    }
     return (
         <div>
             <AlertDialog>
@@ -24,7 +37,7 @@ const DeleteBookingModal = ({booking}) => {
                                 <Button slot="close" variant="tertiary">
                                     Cancel
                                 </Button>
-                                <Button slot="close" variant="danger">
+                                <Button onClick={handleDelete} slot="close" variant="danger">
                                     Confirm Delete
                                 </Button>
                             </AlertDialog.Footer>

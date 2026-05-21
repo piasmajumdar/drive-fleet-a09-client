@@ -1,12 +1,18 @@
 import DeleteBookingModal from "@/components/DeleteBookingModal";
+import { revalidatePath } from "next/cache";
 import Image from "next/image";
 
 const MyBookingsPage = async () => {
 
+    const revalidateMyBooking = async() => {
+        "use server"
+        revalidatePath('/my-bookings')
+    }
+
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/6a0dc12bc4736f646b8393c6`);
     const bookings = await res.json();
-    console.log(bookings)
+    // console.log(bookings)
 
     return (
         <div className="min-h-screen bg-gray-50 px-4 py-10 md:px-10">
@@ -114,7 +120,7 @@ const MyBookingsPage = async () => {
 
                                 {/* Action */}
                                 <td className="px-6 py-5 text-center">
-                                    <DeleteBookingModal booking={booking}></DeleteBookingModal>
+                                    <DeleteBookingModal revalidateMyBooking={revalidateMyBooking} booking={booking}></DeleteBookingModal>
                                 </td>
                             </tr>
                         ))}
