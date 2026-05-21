@@ -11,7 +11,9 @@ const MyAddedCar = async () => {
     const ownerId = session?.user?.id;
     console.log(ownerId)
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/my-added-cars/${ownerId}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/my-added-cars/${ownerId}`,{
+        cache: "no-store"
+    });
     const myAddedCars = await res.json();
 
     const revalidateMyAddedCarsPath = async () => {
