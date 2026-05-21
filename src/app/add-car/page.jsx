@@ -69,7 +69,7 @@ const AddCarPage = () => {
         // console.log(data);
         if(data.insertedId){
             toast.success("Your Car has been added successfully.")
-            router.push('/my-added-cars');
+            router.push(`/explore-cars/${data?.insertedId}`);
 
         }
     };
