@@ -25,6 +25,11 @@ const AddCarPage = () => {
 
         const form = new FormData(e.currentTarget);
 
+        if(!session?.user?.id){
+            toast.error("Please login to add a car")
+            return;
+        }
+
         const car = {
             ownerId: session?.user?.id,
             carName: form.get("carName"),
