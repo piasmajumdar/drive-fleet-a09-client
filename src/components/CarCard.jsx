@@ -23,15 +23,18 @@ const CarCard = ({ car }) => {
             {/* Image Section */}
             <div className="relative overflow-hidden rounded-xl">
                 <Image
-                    src={car?.imageURL[0]}
+                    src={car?.imageURL?.[0] &&
+                        car.imageURL[0].startsWith("http")
+                        ? car.imageURL[0]
+                        : "/fallback-image.png"}
                     alt="Toyota RAV4"
                     height={300}
                     width={300}
                     className="h-[200px] w-full object-cover"
                 />
-                {/* Wishlist Button */}
+                {/* Available Badge */}
                 <button className="absolute right-7 top-3 flex h-10 w-10 items-center justify-center shadow-md">
-                    <div className={`p-2 rounded-md ${car.availabilityStatus === "Available"? "bg-green-200": "bg-gray-400"}`}>
+                    <div className={`p-2 rounded-md ${car.availabilityStatus === "Available" ? "bg-green-200" : "bg-gray-400"}`}>
                         <p>{car?.availabilityStatus}</p>
                     </div>
                 </button>

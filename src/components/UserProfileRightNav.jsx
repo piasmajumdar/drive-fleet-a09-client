@@ -6,8 +6,10 @@ import { Avatar, Dropdown, Label } from "@heroui/react";
 import Link from 'next/link';
 import { authClient } from './../lib/auth-client';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const UserProfileRightNav = () => {
+    const router = useRouter();
 
     const { data: session, isPending } = authClient.useSession()
     // console.log(session?.user)
@@ -15,7 +17,8 @@ const UserProfileRightNav = () => {
         const data = await authClient.signOut();
         // console.log(data);
         if (data.data.success) {
-            toast.success("Logout Successfully")
+            toast.success("Logout Successfully");
+            router.push('/auth/login')
         }
     }
 

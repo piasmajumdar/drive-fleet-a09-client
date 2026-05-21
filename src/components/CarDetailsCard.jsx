@@ -105,7 +105,10 @@ export default function CarDetailsCard({ car }) {
                                 <div className="relative rounded-[28px] overflow-hidden bg-white border border-gray-200">
 
                                     <Image
-                                        src={car?.imageURL[0]}
+                                        src={car?.imageURL?.[0] &&
+                                            car.imageURL[0].startsWith("http")
+                                            ? car.imageURL[0]
+                                            : "/fallback-image.png"}
                                         alt="BMW"
                                         width={700}
                                         height={500}
@@ -138,7 +141,10 @@ export default function CarDetailsCard({ car }) {
                                             className="rounded-2xl overflow-hidden border border-gray-200 bg-white cursor-pointer hover:border-red-500 transition"
                                         >
                                             <Image
-                                                src={img}
+                                                src={img &&
+                                                    img.startsWith("http")
+                                                    ? img
+                                                    : "/fallback-image.png"}
                                                 alt="thumb"
                                                 width={120}
                                                 height={80}

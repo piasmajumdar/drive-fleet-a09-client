@@ -1,18 +1,18 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const carTypes = ["Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Pickup Truck", "Minivan", "Station Wagon", "Sports Car", "Luxury Car", "Electric", "Hybrid", "Crossover", "Roadster", "Compact", "Muscle Car", "Off-Road", "Van", "Microcar", "Limousine"];
-
 const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid", "CNG"];
-
 const transmissionTypes = ["Automatic", "Manual", "CVT"];
-
 const availabilityOptions = ["Available", "Unavailable"];
 
 const AddCarPage = () => {
+    const router = useRouter();
 
     const [imageFields, setImageFields] = useState([""]);
     const [featureFields, setFeatureFields] = useState([""]);
@@ -62,7 +62,12 @@ const AddCarPage = () => {
             body: JSON.stringify(car),
         })
         const data = await res.json()
-        console.log(data);
+        // console.log(data);
+        if(data.insertedId){
+            toast.success("Your Car has been added successfully.")
+            router.push('/my-added-cars');
+
+        }
     };
 
     return (
