@@ -26,7 +26,7 @@ const UserProfileRightNav = () => {
         <div>
             {isPending ? "Loading..." :
                 session ?
-                    <ul className='flex gap-3 items-center'>
+                    <div className='flex gap-3 items-center'>
                         <h2>{session?.user?.name.split(" ")[0]}</h2>
                         <Dropdown>
                             <Dropdown.Trigger className="rounded-full">
@@ -73,7 +73,7 @@ const UserProfileRightNav = () => {
                                 </Dropdown.Menu>
                             </Dropdown.Popover>
                         </Dropdown>
-                    </ul>
+                    </div>
                     :
                     <Button variant="danger" className={'bg-[#c40101] mt-auto rounded-md hover:scale-105 hover:shadow-xl hover:shadow-red-200'}><Link href={'/auth/login'}>Login</Link> </Button>
                     
