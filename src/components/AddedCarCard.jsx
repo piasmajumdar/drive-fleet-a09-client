@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import DeleteAddedCarModal from "./DeleteAddedCarModal";
+import UpdateCarModal from "./UpdateCarModal";
 
 const AddedCarCard = ({ car, revalidateMyAddedCarsPath }) => {
     return (
@@ -61,10 +62,12 @@ const AddedCarCard = ({ car, revalidateMyAddedCarsPath }) => {
                 </div>
 
                 {/* All action buttons */}
-                <div className="mt-auto">
+                <div className="mt-auto flex flex-col gap-2">
                     <Link href={`/explore-cars/${car._id}`}><Button variant="outline" className={''}>View</Button></Link>
-                    <Link href={`/explore-cars/${car._id}`}><Button variant="outline" className={'mt-auto'}>Edit</Button></Link>
-                    <DeleteAddedCarModal car={car} revalidateMyAddedCarsPath={revalidateMyAddedCarsPath}></DeleteAddedCarModal>
+                    <div className="flex flex-wrap gap-2 justify-between">
+                        <UpdateCarModal car={car}></UpdateCarModal>
+                        <DeleteAddedCarModal car={car} revalidateMyAddedCarsPath={revalidateMyAddedCarsPath}></DeleteAddedCarModal>
+                    </div>
                 </div>
             </div>
         </div>
