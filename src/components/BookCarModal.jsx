@@ -11,7 +11,7 @@ const BookCarModal = ({ car }) => {
     const bookingDate = new Date();
     console.log(bookingDate)
 
-    const { data: session } = authClient.useSession()
+    const { data: session , isPending} = authClient.useSession()
     // console.log(session?.user);
     const backend = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL
     console.log(backend)
@@ -43,16 +43,17 @@ const BookCarModal = ({ car }) => {
                 body: JSON.stringify(bookingDetails)
             })
             const data = await res.json();
-            // console.log(data)
-            if(data.insertedId){
-                toast.success(`${car?.carName} booked successfully`)
+            console.log(data)
+            if(data.success){
+                toast.success(`${car?.carName} booked successfully`);
+                window.location.reload()
             }
         }
     }
     return (
         <div>
             <Modal>
-                <Button onClick={handleLoginBeforeBook} variant="danger" className={'text-2xl bg-red-600 rounded-md hover:shadow-xl hover:shadow-red-300 hover:scale-105 p-5'}>Book Now</Button>
+                <Button onClick={handleLoginBeforeBook} isDisabled={isPending ? true : false} variant="danger" className={'text-2xl bg-red-600 rounded-md hover:shadow-xl hover:shadow-red-300 hover:scale-105 p-5'}>Book Now</Button>
                 <Modal.Backdrop>
                     <Modal.Container placement="auto">
                         <Modal.Dialog className="sm:max-w-md">
