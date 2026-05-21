@@ -4,19 +4,51 @@ import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { MdFavoriteBorder } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const BookCarModal = ({ car }) => {
     const router = useRouter()
+    const bookingDate = new Date();
+    console.log(bookingDate)
 
     const { data: session } = authClient.useSession()
-    console.log(session);
-    
+    // console.log(session?.user);
+    const backend = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL
+    console.log(backend)
+
     const handleLoginBeforeBook = () => {
         if (!session) {
             router.push('/auth/login')
         }
     }
 
+    const handleBookCar = async (e) => {
+        if (session?.user) {
+            e.preventDefault();
+            const form = new FormData(e.currentTarget)
+            const formData = Object.fromEntries(form.entries())
+            const bookingDetails = {
+                ...formData,
+                userId: session?.user.id,
+                bookingDate,
+                car
+            }
+            // console.log(bookingDetails);
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings`, {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(bookingDetails)
+            })
+            const data = await res.json();
+            // console.log(data)
+            if(data.insertedId){
+                toast.success(`${car?.carName} booked successfully`)
+            }
+        }
+    }
     return (
         <div>
             <Modal>
@@ -27,12 +59,12 @@ const BookCarModal = ({ car }) => {
                             <Modal.CloseTrigger />
                             <Modal.Body className="p-2 w-full">
                                 <Surface variant="default">
-                                    <form className="flex flex-col gap-4">
+                                    <form onSubmit={handleBookCar} className="flex flex-col gap-4">
 
                                         <div className="bg-white rounded-[28px] border border-gray-200 p-7 shadow-sm">
 
                                             <h2 className="text-3xl font-bold text-black mb-8">
-                                                Book This Car
+                                                Book {car?.carName}
                                             </h2>
 
                                             {/* Price */}
@@ -68,8 +100,10 @@ const BookCarModal = ({ car }) => {
                                                     </label>
 
                                                     <select
+                                                        name="driver"
+                                                        required
                                                         className="w-full h-14 rounded-2xl border border-gray-200 px-4 outline-none bg-white focus:border-red-500"
-                                                        defaultValue=""
+                                                        defaultValue="yes"
                                                     >
                                                         <option value="yes">Yes</option>
                                                         <option value="no">No</option>
@@ -83,6 +117,7 @@ const BookCarModal = ({ car }) => {
 
                                                     <input
                                                         type="text"
+                                                        name="note"
                                                         className="w-full h-14 rounded-2xl border border-gray-200 px-4 outline-none bg-white focus:border-red-500"
                                                     />
                                                 </div>
@@ -91,7 +126,7 @@ const BookCarModal = ({ car }) => {
                                             {/* Buttons */}
                                             <div className="mt-8 space-y-4">
 
-                                                <Button slot="close" className="w-full h-14 rounded-2xl bg-red-600 hover:bg-red-700 transition text-white font-semibold text-lg shadow-md">
+                                                <Button type="submit" className="w-full h-14 rounded-2xl bg-red-600 hover:bg-red-700 transition text-white font-semibold text-lg shadow-md">
                                                     Book Now
                                                 </Button>
                                             </div>

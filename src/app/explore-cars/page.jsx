@@ -4,7 +4,7 @@ import SearchBar from "@/components/SearchBar";
 
 const ExploreCarsPage = async () => {
 
-    const res = await fetch(`${process.env.BACKEND_SERVER_URL}/cars`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars`);
     const cars = await res.json();
     console.log(cars)
 
