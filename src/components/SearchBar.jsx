@@ -1,55 +1,109 @@
-import { Label, SearchField, ListBox, Select } from "@heroui/react";
+"use client";
 
+import { useState } from "react";
+import {
+    usePathname,
+    useRouter,
+    useSearchParams
+} from "next/navigation";
+
+import { FaSearch } from "react-icons/fa";
+
+const carTypes = ["Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Pickup Truck", "Minivan", "Station Wagon", "Sports Car", "Luxury Car", "Electric", "Hybrid", "Crossover", "Roadster", "Compact", "Muscle Car", "Off-Road", "Van", "Microcar", "Limousine"];
 
 const SearchBar = () => {
+
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    const [searchInp, setSearchInp] = useState(
+        searchParams.get("search") || ""
+    );
+
+    // Search
+    const handleSearch = () => {
+
+        const params = new URLSearchParams(window.location.search);
+
+        searchInp.trim()
+            ? params.set("search", searchInp.trim())
+            : params.delete("search");
+
+        router.replace(`${pathname}?${params.toString()}`);
+    };
+
+    // Type Filter
+    const handleType = (e) => {
+        const value = e.target.value;
+        const params = new URLSearchParams(window.location.search);
+
+        value
+            ? params.set("type", value)
+            : params.delete("type");
+
+        router.replace(`${pathname}?${params.toString()}`);
+    };
+
+    // Reset Filters
+    const handleReset = () => {
+        setSearchInp("");
+        router.replace(pathname);
+    };
+
     return (
-        <div className="flex flex-wrap gap-2 items-center">
-            <div className="max-w-[400px] space-y-4 my-2">
-                <SearchField fullWidth name="search">
-                    <SearchField.Group>
-                        <SearchField.SearchIcon />
-                        <SearchField.Input placeholder="Search by car name..." />
-                        <SearchField.ClearButton />
-                    </SearchField.Group>
-                </SearchField>
+        <div className="flex flex-wrap items-center gap-3 my-4 pb-2">
+
+            {/* Search Input */}
+            <div className="flex items-center border rounded-lg overflow-hidden">
+
+                <input
+                    type="text"
+                    placeholder="Search by car name..."
+                    value={searchInp}
+                    onChange={(e) => setSearchInp(e.target.value)}
+                    className="px-4 py-2 w-[300px] outline-none"
+                />
+
+                <button
+                    onClick={handleSearch}
+                    className="bg-red-700 hover:bg-red-800 text-white px-4 py-3 h-full transition"
+                >
+                    <FaSearch />
+                </button>
+
             </div>
 
-            <div>
-                <Select className="" placeholder="All types">
-                    <Select.Trigger>
-                        <Select.Value />
-                        <Select.Indicator />
-                    </Select.Trigger>
-                    <Select.Popover>
-                        <ListBox>
-                            <ListBox.Item id="florida" textValue="Florida">
-                                Florida
-                                <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="delaware" textValue="Delaware">
-                                Delaware
-                                <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="california" textValue="California">
-                                California
-                                <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="texas" textValue="Texas">
-                                Texas
-                                <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="new-york" textValue="New York">
-                                New York
-                                <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="washington" textValue="Washington">
-                                Washington
-                                <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                        </ListBox>
-                    </Select.Popover>
-                </Select>
-            </div>
+            {/* Car Type Select */}
+            <select
+                value={searchParams.get("type") || ""}
+                onChange={handleType}
+                className="border rounded-lg px-4 py-2 outline-none w-[250px]"
+            >
+                <option value="">
+                    All Types
+                </option>
+
+                {
+                    carTypes.map((type) => (
+                        <option
+                            key={type}
+                            value={type}
+                        >
+                            {type}
+                        </option>
+                    ))
+                }
+
+            </select>
+
+            {/* Reset Button */}
+            <button
+                onClick={handleReset}
+                className="border border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-5 py-2 rounded-lg transition"
+            >
+                Reset
+            </button>
         </div>
     );
 };
