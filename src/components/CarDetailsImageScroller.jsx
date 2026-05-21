@@ -15,21 +15,13 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import CarCardAvailable from "./CarCardAvailable";
 
-const AvailableCarScroller = ({ cars }) => {
+const CarDetailsImageScroller = ({ car }) => {
 
     return (
         <div>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 slidesPerView={1}
-                breakpoints={{
-                    500: {
-                        slidesPerView: 2,
-                    },
-                    1000: {
-                        slidesPerView: 3,
-                    },
-                }}
                 navigation={true}
                 pagination={{ clickable: true }}
                 autoplay={{
@@ -38,13 +30,20 @@ const AvailableCarScroller = ({ cars }) => {
                     pauseOnMouseEnter: true
                 }}
                 loop={true}
-                preventClicks={false}
-                preventClicksPropagation={false}
             >
                 {
-                    cars.map((car, ind) => {
+                    car?.imageURL.map((img, ind) => {
                         return <SwiperSlide key={ind}>
-                            <CarCardAvailable car={car}></CarCardAvailable>
+                            <Image
+                                src={img &&
+                                    img.startsWith("http")
+                                    ? img
+                                    : "/fallback-image.png"}
+                                alt={"Car Image"}
+                                width={700}
+                                height={500}
+                                className="w-full h-[380px] object-cover"
+                            />
                         </SwiperSlide>
                     })
                 }
@@ -54,4 +53,4 @@ const AvailableCarScroller = ({ cars }) => {
     );
 };
 
-export default AvailableCarScroller;
+export default CarDetailsImageScroller;

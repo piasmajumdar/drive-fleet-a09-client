@@ -26,6 +26,7 @@ import {
 import BookCarModal from "./BookCarModal";
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineNumber } from "react-icons/ai";
+import CarDetailsImageScroller from "./CarDetailsImageScroller";
 
 // {
 //   "_id": {
@@ -104,16 +105,7 @@ export default function CarDetailsCard({ car }) {
                                 {/* Main Image */}
                                 <div className="relative rounded-[28px] overflow-hidden bg-white border border-gray-200">
 
-                                    <Image
-                                        src={car?.imageURL?.[0] &&
-                                            car.imageURL[0].startsWith("http")
-                                            ? car.imageURL[0]
-                                            : "/fallback-image.png"}
-                                        alt="BMW"
-                                        width={700}
-                                        height={500}
-                                        className="w-full h-[380px] object-cover"
-                                    />
+                                    <CarDetailsImageScroller car={car}></CarDetailsImageScroller>
 
                                     {/* Rating */}
                                     <div className="absolute top-5 right-5 bg-white rounded-full px-4 py-2 shadow-md flex items-center gap-2">
@@ -122,36 +114,6 @@ export default function CarDetailsCard({ car }) {
                                             {car?.ratings}
                                         </span>
                                     </div>
-
-                                    {/* Arrows */}
-                                    <button className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-red-600 hover:text-white transition">
-                                        <IoChevronBack size={20} />
-                                    </button>
-
-                                    <button className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-red-600 hover:text-white transition">
-                                        <IoChevronForward size={20} />
-                                    </button>
-                                </div>
-
-                                {/* Thumbnails */}
-                                <div className="flex gap-4 mt-5">
-                                    {car?.imageURL.map((img, index) => (
-                                        <div
-                                            key={index}
-                                            className="rounded-2xl overflow-hidden border border-gray-200 bg-white cursor-pointer hover:border-red-500 transition"
-                                        >
-                                            <Image
-                                                src={img &&
-                                                    img.startsWith("http")
-                                                    ? img
-                                                    : "/fallback-image.png"}
-                                                alt="thumb"
-                                                width={120}
-                                                height={80}
-                                                className="w-[110px] h-[80px] object-cover"
-                                            />
-                                        </div>
-                                    ))}
                                 </div>
 
                                 {/* About */}
