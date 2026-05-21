@@ -13,33 +13,35 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import CarCardAvailable from "./CarCardAvailable";
 
 const AvailableCarScroller = ({ cars }) => {
-    const { title, image } = tile;
 
     return (
         <div>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 slidesPerView={1}
+                breakpoints={{
+                    500: {
+                        slidesPerView: 2,
+                    },
+                }}
                 navigation={true}
                 pagination={{ clickable: true }}
                 autoplay={{
-                    delay: 1000,
+                    delay: 1500,
                     disableOnInteraction: false,
+                    pauseOnMouseEnter: true
                 }}
                 loop={true}
+                preventClicks={false}
+                preventClicksPropagation={false}
             >
                 {
-                    image.map((img, ind) => {
+                    cars.map((car, ind) => {
                         return <SwiperSlide key={ind}>
-                            <Image
-                                src={img}
-                                alt={title}
-                                width={1000}
-                                height={700}
-                                className="w-full h-[400px] object-cover"
-                            />
+                            <CarCardAvailable car={car}></CarCardAvailable>
                         </SwiperSlide>
                     })
                 }

@@ -12,7 +12,7 @@ const AvailableCar = async () => {
     return (
         <div className="w-11/12 mx-auto py-4">
             <h2 className={`text-3xl font-bold ${plusJakarta.className}`}>Popular Available <span className="text-red-700">Cars</span></h2>
-            {/* <AvailableCarScroller cars={cars}></AvailableCarScroller> */}
+            <AvailableCarScroller cars={cars}></AvailableCarScroller>
         </div>
     );
 };
