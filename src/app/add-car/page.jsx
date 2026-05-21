@@ -62,7 +62,6 @@ const AddCarPage = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                authorization: `Bearer ${session?.user?.id}`
             },
             body: JSON.stringify(car),
         })
