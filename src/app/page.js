@@ -1,3 +1,4 @@
+import AvailableCar from "@/components/AvailableCar";
 import Banner from "@/components/Banner";
 import Feature from "@/components/Feature";
 import Image from "next/image";
@@ -7,6 +8,7 @@ export default function Home() {
     <div>
       <Banner></Banner>
       <Feature></Feature>
+      <AvailableCar></AvailableCar>
     </div>
   );
 }

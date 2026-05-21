@@ -30,8 +30,8 @@ const features = [
 
 const Feature = () => {
     return (
-        <section className="w-full py-10">
-            <div className="w-11/12 mx-auto grid grid-cols-1 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm sm:grid-cols-2 lg:grid-cols-4">
+        <section className="w-full py-10 my-5">
+            <div className="w-11/12 mx-auto grid grid-cols-1 overflow-hidden rounded-xl border border-gray-200 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
 
                 {features.map((feature, index) => (
                     <div
