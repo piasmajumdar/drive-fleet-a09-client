@@ -3,7 +3,9 @@ import CarDetailsCard from "@/components/CarDetailsCard";
 const CarDetailsPage = async ({ params }) => {
     const { id } = await params;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/${id}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/${id}`, {
+        cache: "no-store"
+    });
     const car = await res.json();
     // console.log(car)
 

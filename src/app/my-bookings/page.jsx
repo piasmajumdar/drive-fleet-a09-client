@@ -10,7 +10,9 @@ const MyBookingsPage = async () => {
     }
 
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/6a0dc12bc4736f646b8393c6`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/6a0dc12bc4736f646b8393c6`,{
+        cache: "no-store"
+    });
     const bookings = await res.json();
     // console.log(bookings)
 
