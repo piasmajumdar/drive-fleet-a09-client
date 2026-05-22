@@ -39,7 +39,7 @@ const AddedCarCard = ({ car, revalidateMyAddedCarsPath }) => {
                 <div className="mt-2 flex items-center gap-3 text-sm text-gray-500">
                     <span>{car?.carType}</span>
                     <span>•</span>
-                    <span>{car?.pickupLocation} Seats</span>
+                    <span>{car?.seatCapacity} Seats</span>
                 </div>
 
                 {/* Location */}
