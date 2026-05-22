@@ -2,11 +2,16 @@
 import React from 'react';
 import { AlertDialog, Button } from '@heroui/react';
 import { toast } from 'react-toastify';
+import { authClient } from '@/lib/auth-client';
 
 const DeleteAddedCarModal = ({ car, revalidateMyAddedCarsPath }) => {
     const handleDelete = async()=>{
+        const { data: tokenData } = await authClient.token();
         const req = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/${car._id}`,{
             method: "DELETE",
+            headers: {
+                authorization: `Bearer ${tokenData?.token}`
+            }
         })
         const res = await req.json();
         // console.log(res);

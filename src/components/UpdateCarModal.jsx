@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Button, Modal, Surface } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -30,17 +31,18 @@ const UpdateCarModal = ({ car }) => {
             about: form.get("about"),
         };
         // console.log(updatedCar);
-
-        const req = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/${car?._id}`,{
+        const { data: tokenData } = await authClient.token();
+        const req = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/${car?._id}`, {
             method: 'PATCH',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "authorization": `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(updatedCar)
         })
         const res = await req.json();
         // console.log(res); 
-        if(res?.modifiedCount>0){
+        if (res?.modifiedCount > 0) {
             toast.success("Updated Successfully");
             router.push(`/explore-cars/${car?._id}`)
         }
