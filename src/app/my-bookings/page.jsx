@@ -17,12 +17,20 @@ const MyBookingsPage = async () => {
     const userId = session?.user?.id;
     // console.log(ownerId)
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    // console.log(token);
+
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/${userId}`, {
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        }
     });
     const bookings = await res.json();
-    // console.log(bookings)
+    console.log(bookings)
 
     return (
         <div className="min-h-screen bg-gray-50 py-10">
