@@ -25,7 +25,7 @@ const AddCarPage = () => {
 
         const form = new FormData(e.currentTarget);
 
-        if(!session?.user?.id){
+        if (!session?.user?.id) {
             toast.error("Please login to add a car")
             return;
         }
@@ -57,17 +57,19 @@ const AddCarPage = () => {
         };
 
         // console.log(car);
+        const { data: tokenData } = await authClient.token();
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "authorization": `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(car),
         })
         const data = await res.json()
         // console.log(data);
-        if(data.insertedId){
+        if (data.insertedId) {
             toast.success("Your Car has been added successfully.")
             router.push(`/explore-cars/${data?.insertedId}`);
 
