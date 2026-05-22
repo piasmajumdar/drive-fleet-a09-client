@@ -83,7 +83,7 @@ npm install react-icons
 ## Backend Packages
 
 ```bash
-npm install express mongodb cors dotenv
+npm install express mongodb cors dotenv nodemon
 ```
 
 ---
@@ -123,7 +123,7 @@ npm run dev
 ## Run Server
 
 ```bash
-npm start
+nodemon index.js
 ```
 
 ---
