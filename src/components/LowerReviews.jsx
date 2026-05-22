@@ -26,7 +26,7 @@ const reviews = [
 
 const LowerReviews = () => {
     return (
-        <section className="bg-white py-20">
+        <section className="py-20">
             <div className="mx-auto w-11/12">
 
                 {/* Section Header */}
@@ -35,7 +35,7 @@ const LowerReviews = () => {
                         Customer Reviews
                     </p>
 
-                    <h2 className="mt-4 text-4xl font-extrabold text-black md:text-5xl">
+                    <h2 className="mt-4 text-4xl font-extrabold md:text-5xl">
                         আমাদের গ্রাহকদের মতামত
                     </h2>
 
@@ -50,7 +50,7 @@ const LowerReviews = () => {
                     {reviews.map((review) => (
                         <div
                             key={review.id}
-                            className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                            className="rounded-3xl border border-gray-200 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-red-300"
                         >
 
                             {/* Stars */}
@@ -61,13 +61,13 @@ const LowerReviews = () => {
                             </div>
 
                             {/* Review Text */}
-                            <p className="mt-6 text-base leading-8 text-gray-700">
+                            <p className="mt-6 text-base leading-8 text-gray-700 dark:text-white">
                                 “{review.review}”
                             </p>
 
                             {/* User Info */}
                             <div className="mt-8 border-t border-gray-100 pt-5">
-                                <h3 className="text-lg font-bold text-black">
+                                <h3 className="text-lg font-bold">
                                     {review.name}
                                 </h3>
 

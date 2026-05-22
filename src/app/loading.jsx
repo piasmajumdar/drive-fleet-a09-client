@@ -2,7 +2,7 @@
 
 const Loading = () => {
     return (
-        <div className="flex min-h-screen items-center justify-center bg-white">
+        <div className="flex min-h-screen items-center justify-center bg-white dark:bg-transparent">
 
             <div className="flex flex-col items-center gap-6">
 
@@ -18,11 +18,11 @@ const Loading = () => {
                 {/* Brand */}
                 <div className="text-center">
 
-                    <h1 className="text-4xl font-black tracking-tight text-gray-900">
+                    <h1 className="text-4xl font-black tracking-tight text-gray-900 dark:text-white">
                         DriveFleet
                     </h1>
 
-                    <p className="mt-2 text-gray-500">
+                    <p className="mt-2 text-gray-500 dark:text-white">
                         Preparing your premium ride...
                     </p>
 

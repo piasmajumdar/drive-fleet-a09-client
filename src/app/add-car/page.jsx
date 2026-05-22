@@ -77,14 +77,14 @@ const AddCarPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 px-4 py-10 md:px-8">
+        <div className="min-h-screen bg-gray-50 dark:bg-transparent px-4 py-10 md:px-8">
 
-            <div className="mx-auto max-w-7xl rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:p-10">
+            <div className="mx-auto max-w-7xl rounded-3xl border border-gray-200 bg-white dark:bg-transparent p-6 shadow-sm md:p-10">
 
                 {/* Header */}
                 <div className="mb-10">
-                    <h1 className="text-3xl font-bold text-gray-900">Add a New Car</h1>
-                    <p className="mt-2 text-gray-500">Fill in the details to list your car for rent</p>
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Add a New Car</h1>
+                    <p className="mt-2 text-gray-500 dark:text-white">Fill in the details to list your car for rent</p>
                 </div>
 
                 {/* Form */}
@@ -94,7 +94,7 @@ const AddCarPage = () => {
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Car Name</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Car Name</label>
 
                             <input
                                 type="text"
@@ -106,7 +106,7 @@ const AddCarPage = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Daily Rent Price</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Daily Rent Price</label>
 
                             <input
                                 type="number"
@@ -118,7 +118,7 @@ const AddCarPage = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Car Type</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Car Type</label>
 
                             <select
                                 name="carType"
@@ -138,7 +138,7 @@ const AddCarPage = () => {
                     <div>
 
                         <div className="mb-3 flex items-center justify-between">
-                            <label className="text-sm font-semibold text-gray-700">Image URLs</label>
+                            <label className="text-sm font-semibold text-gray-700 dark:text-white">Image URLs</label>
 
                             <button
                                 type="button"
@@ -182,7 +182,7 @@ const AddCarPage = () => {
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Seat Capacity</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Seat Capacity</label>
 
                             <input
                                 name="seatCapacity"
@@ -193,7 +193,7 @@ const AddCarPage = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Pickup Location</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Pickup Location</label>
 
                             <input
                                 type="text"
@@ -205,7 +205,7 @@ const AddCarPage = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Availability Status</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Availability Status</label>
 
                             <select
                                 name="availabilityStatus"
@@ -223,7 +223,7 @@ const AddCarPage = () => {
 
                     {/* Description */}
                     <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">Description</label>
+                        <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Description</label>
 
                         <textarea
                             name="description"
@@ -236,7 +236,7 @@ const AddCarPage = () => {
 
                     {/* About */}
                     <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">About</label>
+                        <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">About</label>
 
                         <textarea
                             name="about"
@@ -251,7 +251,7 @@ const AddCarPage = () => {
                     <div>
 
                         <div className="mb-3 flex items-center justify-between">
-                            <label className="text-sm font-semibold text-gray-700">Features</label>
+                            <label className="text-sm font-semibold text-gray-700 dark:text-white">Features</label>
 
                             <button
                                 type="button"
@@ -295,7 +295,7 @@ const AddCarPage = () => {
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Fuel Type</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Fuel Type</label>
 
                             <select
                                 name="fuelType"
@@ -311,7 +311,7 @@ const AddCarPage = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Mileage</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Mileage</label>
 
                             <input
                                 type="number"
@@ -323,7 +323,7 @@ const AddCarPage = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Engine Model</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Engine Model</label>
 
                             <input
                                 type="text"
@@ -335,7 +335,7 @@ const AddCarPage = () => {
                         </div>
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">Doors</label>
+                            <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Doors</label>
 
                             <input
                                 type="number"
@@ -350,7 +350,7 @@ const AddCarPage = () => {
                     {/* Transmission */}
                     <div className="max-w-md">
 
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">Transmission</label>
+                        <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white">Transmission</label>
 
                         <select
                             name="transmission"

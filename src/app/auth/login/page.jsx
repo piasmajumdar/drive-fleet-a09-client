@@ -53,7 +53,7 @@ const LoginPage = () => {
 
     return (
         <div className='h-[80vh] flex justify-center items-center mx-auto my-5'>
-            <div className='bg-white rounded-lg shadow-xl shadow-red-200 p-6 sm:w-sm '>
+            <div className='bg-white dark:bg-transparent rounded-lg shadow-xl shadow-red-200 dark:shadow-none p-6 sm:w-sm '>
                 <h2 className='text-3xl text-center'>Please Login!</h2>
                 {/* Google */}
                 <Button

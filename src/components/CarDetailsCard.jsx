@@ -86,7 +86,7 @@ export default function CarDetailsCard({ car }) {
 
                     <span>/</span>
 
-                    <span className="text-black font-medium">
+                    <span className="text-black dark:text-white font-medium">
                         {car?.carName}
                     </span>
                 </div>
@@ -118,7 +118,7 @@ export default function CarDetailsCard({ car }) {
 
                                 {/* About */}
                                 <div className="mt-10">
-                                    <h2 className="text-2xl font-bold text-black mb-4">
+                                    <h2 className="text-2xl font-bold text-black dark:text-white mb-4">
                                         About the Car
                                     </h2>
 
@@ -132,7 +132,7 @@ export default function CarDetailsCard({ car }) {
                             <div className="flex flex-col">
 
                                 {/* Title */}
-                                <h1 className="text-4xl font-black text-black mb-4">
+                                <h1 className="text-4xl font-black text-black dark:text-red-500 mb-4">
                                     {car?.carName}
                                 </h1>
 
@@ -160,7 +160,7 @@ export default function CarDetailsCard({ car }) {
 
                                     <div className="flex items-center gap-2">
                                         <FaStar className="text-red-500" />
-                                        <span className="font-semibold text-black">
+                                        <span className="font-semibold text-black dark:text-red-500">
                                             {car?.ratings}
                                         </span>
                                         <span className="text-gray-500 text-sm">
@@ -190,7 +190,7 @@ export default function CarDetailsCard({ car }) {
 
                                 {/* Features */}
                                 <div className="mb-8">
-                                    <h3 className="text-xl font-bold text-black mb-4">
+                                    <h3 className="text-xl font-bold text-black dark:text-white mb-4">
                                         Features
                                     </h3>
 
@@ -226,7 +226,7 @@ export default function CarDetailsCard({ car }) {
                                             <span>Fuel Type</span>
                                         </div>
 
-                                        <span className="font-medium text-black">
+                                        <span className="font-medium text-black dark:text-white">
                                             {car?.fuelType}
                                         </span>
                                     </div>
@@ -237,7 +237,7 @@ export default function CarDetailsCard({ car }) {
                                             <span>Mileage</span>
                                         </div>
 
-                                        <span className="font-medium text-black">
+                                        <span className="font-medium text-black dark:text-white">
                                             {car?.mileage} km/l
                                         </span>
                                     </div>
@@ -248,7 +248,7 @@ export default function CarDetailsCard({ car }) {
                                             <span>Engine</span>
                                         </div>
 
-                                        <span className="font-medium text-black">
+                                        <span className="font-medium text-black dark:text-white">
                                             {car?.engineModel}
                                         </span>
                                     </div>
@@ -259,7 +259,7 @@ export default function CarDetailsCard({ car }) {
                                             <span>Doors</span>
                                         </div>
 
-                                        <span className="font-medium text-black">
+                                        <span className="font-medium text-black dark:text-white">
                                             {car?.doors}
                                         </span>
                                     </div>

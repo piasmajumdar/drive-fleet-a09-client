@@ -48,7 +48,7 @@ const Feature = () => {
 
                         {/* Text */}
                         <div className={`${plusJakarta.className}`}>
-                            <h2 className="text-3xl font-bold text-black">
+                            <h2 className="text-3xl font-bold text-black dark:text-white">
                                 {feature.value}
                             </h2>
 

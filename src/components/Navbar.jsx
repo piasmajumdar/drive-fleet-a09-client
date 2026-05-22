@@ -10,10 +10,10 @@ import { ImMenu } from 'react-icons/im';
 
 const Navbar = async () => {
     const links = <>
-        <li><NavLink href={'/'}>Home</NavLink></li>
-        <li><NavLink href={'/explore-cars'}>Explore Cars</NavLink></li>
-        <li><NavLink href={'/add-car'}>Add Car</NavLink></li>
-        <li><NavLink href={'/my-bookings'}>My Bookings</NavLink></li>
+        <li><NavLink className='dark:text-white' href={'/'}>Home</NavLink></li>
+        <li><NavLink className='dark:text-white' href={'/explore-cars'}>Explore Cars</NavLink></li>
+        <li><NavLink className='dark:text-white' href={'/add-car'}>Add Car</NavLink></li>
+        <li><NavLink className='dark:text-white' href={'/my-bookings'}>My Bookings</NavLink></li>
     </>
 
 

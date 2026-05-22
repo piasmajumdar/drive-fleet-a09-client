@@ -18,7 +18,7 @@ const Banner = () => {
                 />
 
                 {/* Left Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/50 dark:from-black/80 dark:via-black/50 to-transparent"></div>
             </div>
 
             {/* Main Content */}
@@ -30,7 +30,7 @@ const Banner = () => {
                     <div className="mb-6 h-1 w-20 rounded-full bg-red-500"></div>
 
                     {/* Heading */}
-                    <h1 className={`${plusJakarta.className} text-3xl font-black leading-tight text-black md:text-5xl`}>
+                    <h1 className={`${plusJakarta.className} text-3xl font-black leading-tight text-black dark:text-white md:text-5xl`}>
                         Find, Book & <br />
                         Drive Your{" "}
                         <span className="text-red-500">
@@ -39,7 +39,7 @@ const Banner = () => {
                     </h1>
 
                     {/* Description */}
-                    <p className="mt-8 max-w-xl text-lg leading-8 text-gray-700 md:text-xl">
+                    <p className="mt-8 max-w-xl text-lg leading-8 text-gray-700 dark:text-white md:text-xl">
                         Discover the perfect car for any occasion.
                         Luxury, comfort, and performance — all in one place.
                     </p>

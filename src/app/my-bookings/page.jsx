@@ -33,18 +33,18 @@ const MyBookingsPage = async () => {
     // console.log(bookings)
 
     return (
-        <div className="min-h-screen bg-gray-50 py-10">
+        <div className="min-h-screen bg-gray-50 dark:bg-transparent py-10">
             <div className="w-11/12 mx-auto">
                 {/* Header */}
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900">All Bookings</h1>
-                    <p className="mt-2 text-gray-500">
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white">All Bookings</h1>
+                    <p className="mt-2 text-gray-500 dark:text-white">
                         Manage your all car bookings
                     </p>
                 </div>
 
                 {/* Table */}
-                <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
+                <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white dark:bg-transparent shadow-sm">
                     <table className="min-w-full">
                         <thead className="border-b border-gray-200 bg-gray-50">
                             <tr>
@@ -89,7 +89,7 @@ const MyBookingsPage = async () => {
                                             </div>
 
                                             <div>
-                                                <h2 className="text-base font-semibold text-gray-900">
+                                                <h2 className="text-base font-semibold text-gray-900 dark:text-white">
                                                     {booking.car.carName}
                                                 </h2>
 
@@ -102,7 +102,7 @@ const MyBookingsPage = async () => {
 
                                     {/* Booking Date */}
                                     <td className="px-6 py-5">
-                                        <div className="text-sm font-medium text-gray-800">
+                                        <div className="text-sm font-medium text-gray-800 dark:text-white">
                                             {new Date(booking.bookingDate).toLocaleDateString("en-GB", {
                                                 day: "numeric",
                                                 month: "short",
@@ -110,7 +110,7 @@ const MyBookingsPage = async () => {
                                             })}
                                         </div>
 
-                                        <div className="mt-1 text-sm text-gray-500">
+                                        <div className="mt-1 text-sm text-gray-500 dark:text-white">
                                             {new Date(booking.bookingDate).toLocaleTimeString("en-US", {
                                                 hour: "2-digit",
                                                 minute: "2-digit",
@@ -133,7 +133,7 @@ const MyBookingsPage = async () => {
                                     </td>
 
                                     {/* Total Price */}
-                                    <td className="px-6 py-5 text-base font-semibold text-gray-900">
+                                    <td className="px-6 py-5 text-base font-semibold text-gray-900 dark:text-white">
                                         ৳ {booking?.car?.dailyRentPrice}
                                     </td>
 
