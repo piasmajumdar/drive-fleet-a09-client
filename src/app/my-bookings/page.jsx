@@ -30,7 +30,7 @@ const MyBookingsPage = async () => {
         }
     });
     const bookings = await res.json();
-    console.log(bookings)
+    // console.log(bookings)
 
     return (
         <div className="min-h-screen bg-gray-50 py-10">
