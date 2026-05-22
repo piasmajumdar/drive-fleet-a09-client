@@ -9,10 +9,19 @@ const MyAddedCar = async () => {
         headers: await headers()
     })
     const ownerId = session?.user?.id;
-    console.log(ownerId)
+    // console.log(ownerId)
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/my-added-cars/${ownerId}`,{
-        cache: "no-store"
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    console.log(token);
+
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/cars/my-added-cars/${ownerId}`, {
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        }
     });
     const myAddedCars = await res.json();
 
