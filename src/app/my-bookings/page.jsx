@@ -1,5 +1,7 @@
 import DeleteBookingModal from "@/components/DeleteBookingModal";
+import { auth } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 const MyBookingsPage = async () => {
@@ -9,8 +11,14 @@ const MyBookingsPage = async () => {
         revalidatePath('/my-bookings')
     }
 
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+    const userId = session?.user?.id;
+    // console.log(ownerId)
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/6a0dc12bc4736f646b8393c6`,{
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/${userId}`, {
         cache: "no-store"
     });
     const bookings = await res.json();
