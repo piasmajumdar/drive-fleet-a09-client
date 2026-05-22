@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { authClient } from './../lib/auth-client';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import ThemeToggle from './ThemeToggle';
 
 const UserProfileRightNav = () => {
     const router = useRouter();
@@ -23,11 +24,12 @@ const UserProfileRightNav = () => {
     }
 
     return (
-        <div>
+        <div className='flex gap-1 items-center'>
+            <ThemeToggle></ThemeToggle>
             {isPending ? "Loading..." :
                 session ?
                     <div className='flex gap-3 items-center'>
-                        <h2>{session?.user?.name.split(" ")[0]}</h2>
+                        <h2 className='hidden sm:inline'>{session?.user?.name.split(" ")[0]}</h2>
                         <Dropdown>
                             <Dropdown.Trigger className="rounded-full">
                                 <Avatar>
