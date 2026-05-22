@@ -22,7 +22,7 @@ DriveFleet is a modern full-stack car rental platform where users can explore av
 
 # ✨ Features
 
-- 🔐 Secure Authentication with Firebase & JWT
+- 🔐 Secure Authentication BetterAuth with JWT
 - 🚘 Explore available cars with dynamic search and filter
 - 📅 Book rental cars with booking management system
 - 🛠️ Add, Update, and Delete car listings
@@ -30,9 +30,9 @@ DriveFleet is a modern full-stack car rental platform where users can explore av
 - 🍪 JWT token stored in HTTPOnly cookies
 - ⚡ Protected private routes and APIs
 - 📱 Fully responsive for mobile, tablet, and desktop
-- 🎨 Modern UI using HeroUI, GravityUI, and TailwindCSS
+- 🎨 Modern UI using HeroUI, GravityUI, React Icons and TailwindCSS
 - 🔔 Toast notifications using React Toastify
-- 🚫 Custom 404 Not Found page
+- 🚫 Custom 404 Not Found page and Error page
 - ⏳ Loading spinner during data fetching
 
 ---
@@ -48,7 +48,8 @@ DriveFleet is a modern full-stack car rental platform where users can explore av
 - Swiper JS
 - React Toastify
 - React Icons
-- Firebase Authentication
+- BetterAuth Authentication
+- Google Authentication
 
 ## Backend
 - Node.js
@@ -61,7 +62,6 @@ DriveFleet is a modern full-stack car rental platform where users can explore av
 
 ## Deployment
 - Vercel
-- Render
 
 ---
 
@@ -76,7 +76,6 @@ npm install @gravity-ui/uikit
 npm install swiper
 npm install react-toastify
 npm install react-icons
-npm install axios
 ```
 
 ---
@@ -84,7 +83,7 @@ npm install axios
 ## Backend Packages
 
 ```bash
-npm install express mongodb cors dotenv jsonwebtoken cookie-parser
+npm install express mongodb cors dotenv
 ```
 
 ---
@@ -202,15 +201,6 @@ The website is optimized for:
 - 💻 Tablets
 - 🖥️ Desktop Screens
 
----
-
-# ⚠️ Important Notes
-
-- Secure MongoDB credentials with environment variables
-- No default browser alerts used
-- Proper CORS configuration implemented
-- Reloading private routes works correctly
-- Responsive on all screen sizes
 
 ---
 
