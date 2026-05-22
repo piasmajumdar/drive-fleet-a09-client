@@ -9,12 +9,12 @@ import { toast } from "react-toastify";
 const BookCarModal = ({ car }) => {
     const router = useRouter()
     const bookingDate = new Date();
-    console.log(bookingDate)
+    // console.log(bookingDate)
 
     const { data: session , isPending} = authClient.useSession()
     // console.log(session?.user);
     const backend = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL
-    console.log(backend)
+    // console.log(backend)
 
     const handleLoginBeforeBook = () => {
         if (!session) {
