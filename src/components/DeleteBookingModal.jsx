@@ -1,12 +1,17 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { AlertDialog, Button } from '@heroui/react';
 import React from 'react';
 import { toast } from 'react-toastify';
 
 const DeleteBookingModal = ({booking, revalidateMyBooking}) => {
     const handleDelete = async() =>{
+        const {data:tokenData} = await authClient.token();
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SERVER_URL}/bookings/${booking?._id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                authorization: `Bearer ${tokenData?.token}`
+            }
         });
         const data = await res.json();
         // console.log(data);
